@@ -10,4 +10,17 @@ function createTask() {
   inputTask.value = '';
 }
 
+function completeToggle(event) {
+  event.target.classList.toggle('completed');
+}
+
+list.addEventListener('click', (event) => {
+  const selected = document.querySelector('.selected');
+  if (!document.querySelector('.selected') === false) {
+    selected.classList.remove('selected');
+  }
+  event.target.classList.add('selected');
+});
+
+list.addEventListener('dblclick', completeToggle);
 createTaskButton.addEventListener('click', createTask);

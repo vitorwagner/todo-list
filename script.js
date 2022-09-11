@@ -5,6 +5,8 @@ const clearButton = document.getElementById('apaga-tudo');
 const saveButton = document.getElementById('salvar-tarefas');
 const clearDoneButton = document.getElementById('remover-finalizados');
 const clearSelectedButton = document.getElementById('remover-selecionado');
+const upButton = document.getElementById('mover-cima');
+const downButton = document.getElementById('mover-baixo');
 
 function createTask() {
   if (inputTask.value === '') return;
@@ -50,5 +52,23 @@ clearDoneButton.addEventListener('click', () => {
 clearSelectedButton.addEventListener('click', () => {
   if (document.querySelector('.selected') !== null) {
     document.querySelector('.selected').remove();
+  }
+});
+
+// Referência para função de mover itens da lista: https://www.codegrepper.com/code-examples/javascript/move+item+up+or+down+js+list
+
+upButton.addEventListener('click', () => {
+  const selectedItem = document.querySelector('.selected');
+  if (list.firstElementChild !== selectedItem) {
+    list.insertBefore(selectedItem, selectedItem.previousElementSibling);
+  }
+});
+
+downButton.addEventListener('click', () => {
+  if (document.querySelector('.selected') !== null) {
+    const selectedItem = document.querySelector('.selected');
+    if (list.lastElementChild !== selectedItem) {
+      list.insertBefore(selectedItem.nextElementSibling, selectedItem);
+    }
   }
 });

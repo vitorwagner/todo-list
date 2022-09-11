@@ -2,6 +2,7 @@ const createTaskButton = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
 const inputTask = document.getElementById('texto-tarefa');
 const clearButton = document.getElementById('apaga-tudo');
+const saveButton = document.getElementById('salvar-tarefas');
 
 function createTask() {
   if (inputTask.value === '') return;
@@ -23,8 +24,17 @@ list.addEventListener('click', (event) => {
   event.target.classList.add('selected');
 });
 
+function loadSavedList() {
+  list.innerHTML = localStorage.getItem('List');
+}
+
+window.onload = loadSavedList;
+
 list.addEventListener('dblclick', completeToggle);
 createTaskButton.addEventListener('click', createTask);
 clearButton.addEventListener('click', () => {
   list.innerHTML = '';
+});
+saveButton.addEventListener('click', () => {
+  localStorage.setItem('List', list.innerHTML);
 });

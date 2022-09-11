@@ -4,6 +4,7 @@ const inputTask = document.getElementById('texto-tarefa');
 const clearButton = document.getElementById('apaga-tudo');
 const saveButton = document.getElementById('salvar-tarefas');
 const clearDoneButton = document.getElementById('remover-finalizados');
+const clearSelectedButton = document.getElementById('remover-selecionado');
 
 function createTask() {
   if (inputTask.value === '') return;
@@ -44,5 +45,10 @@ clearDoneButton.addEventListener('click', () => {
     if (list.children[i].classList.contains('completed')) {
       list.children[i].remove();
     }
+  }
+});
+clearSelectedButton.addEventListener('click', () => {
+  if (document.querySelector('.selected') !== null) {
+    document.querySelector('.selected').remove();
   }
 });

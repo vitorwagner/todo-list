@@ -58,9 +58,11 @@ clearSelectedButton.addEventListener('click', () => {
 // Referência para função de mover itens da lista: https://www.codegrepper.com/code-examples/javascript/move+item+up+or+down+js+list
 
 upButton.addEventListener('click', () => {
-  const selectedItem = document.querySelector('.selected');
-  if (list.firstElementChild !== selectedItem) {
-    list.insertBefore(selectedItem, selectedItem.previousElementSibling);
+  if (document.querySelector('.selected') !== null) {
+    const selectedItem = document.querySelector('.selected');
+    if (list.firstElementChild !== selectedItem) {
+      list.insertBefore(selectedItem, selectedItem.previousElementSibling);
+    }
   }
 });
 

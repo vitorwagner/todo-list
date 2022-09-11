@@ -1,6 +1,7 @@
 const createTaskButton = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
 const inputTask = document.getElementById('texto-tarefa');
+const clearButton = document.getElementById('apaga-tudo');
 
 function createTask() {
   if (inputTask.value === '') return;
@@ -24,3 +25,6 @@ list.addEventListener('click', (event) => {
 
 list.addEventListener('dblclick', completeToggle);
 createTaskButton.addEventListener('click', createTask);
+clearButton.addEventListener('click', () => {
+  list.innerHTML = '';
+});
